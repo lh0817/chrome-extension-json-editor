@@ -1,0 +1,9 @@
+{
+  "manifest_version": 2,
+  "name": "JSON Editor",
+  "version": "1.0.0",
+  "permissions": ["<all_urls>"],
+  "browser_action": {
+    "default_popup": "index.html"
+  }
+}
