@@ -1,0 +1,25 @@
+{
+  "name": "chrome-extension-json-editor",
+  "version": "1.0.0",
+  "description": "Implements a JSON Editor as Chrome Plugin.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "build": "webpack"
+  },
+  "keywords": [
+    "chrome extension",
+    "edge extension",
+    "json editor"
+  ],
+  "author": "Swolotch",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "jsoneditor": "^9.5.3"
+  }
+}
