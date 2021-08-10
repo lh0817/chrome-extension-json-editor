@@ -1,9 +1,15 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "JSON Editor",
   "version": "1.0.0",
-  "permissions": ["<all_urls>"],
-  "browser_action": {
-    "default_popup": "index.html"
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "/img/code-json-16.png",
+      "32": "/img/code-json-32.png",
+      "48": "/img/code-json-48.png",
+      "128": "/img/code-json-128.png"
+    }
   }
 }
