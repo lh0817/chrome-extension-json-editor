@@ -1,0 +1,12 @@
+.container {
+  display: inline-block;
+  width: 800px;
+  margin: 0;
+  padding: 5px;
+}
+
+.editor-container {
+  width: 395px;
+  height: 500px;
+  float: left;
+}
