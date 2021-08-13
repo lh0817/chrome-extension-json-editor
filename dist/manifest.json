@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "JSON Editor",
   "version": "1.0.0",
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs"],
   "action": {
     "default_popup": "index.html",
     "default_icon": {

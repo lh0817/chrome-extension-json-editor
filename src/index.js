@@ -1,5 +1,7 @@
 import JSONEditor from 'jsoneditor'
 
+const tabBtn = document.querySelector('.new-tab')
+
 function init() {
   // init options for both editors
   const options = {
@@ -42,6 +44,17 @@ function init() {
   editor1.set(json)
   editor2.set(json)
 }
+
+function handleNewTab(e) {
+  e.preventDefault()
+  chrome.tabs.create({
+    url: 'index.html',
+    selected: true,
+  })
+}
+
+// event listener
+tabBtn.addEventListener('click', (e) => handleNewTab(e));
 
 // init extension
 init()
