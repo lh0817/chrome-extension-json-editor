@@ -1,13 +1,14 @@
 body {
   margin: 0;
   padding: 0;
+  color: #333333;
 }
 
 .grid-container {
   display: grid;
   min-width: 790px;
   min-height: 570px;
-  height: calc(100vh - 24px);
+  height: calc(100vh - 36px);
   grid-template-columns: 1fr 24px 1fr;
   grid-template-rows: 36px auto;
   column-gap: 5px;
@@ -38,6 +39,10 @@ body {
 .grid-cell-5 {
   grid-column: 2 / 3;
   grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .grid-cell-6 {
@@ -51,8 +56,18 @@ h1 {
   font-size: 20px;
 }
 
-.new-tab {
+.toolbar-btn {
   cursor: pointer;
   width:24px;
   height:24px;
+}
+
+/* editor styles */
+div.jsoneditor,
+div.jsoneditor-menu {
+  border-color: #333333;
+}
+
+div.jsoneditor-menu {
+  background-color: #333333;
 }
