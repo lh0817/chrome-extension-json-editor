@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  color: #333333;
+  color: #3c3f41;
 }
 
 .grid-container {
@@ -65,9 +65,14 @@ h1 {
 /* editor styles */
 div.jsoneditor,
 div.jsoneditor-menu {
-  border-color: #333333;
+  border-color: #3c3f41;
 }
 
 div.jsoneditor-menu {
-  background-color: #333333;
+  background-color: #3c3f41;
+}
+
+.jsoneditor-menu>.jsoneditor-modes>button, .jsoneditor-menu>button {
+  opacity: 1;
+  color:#ffffff;
 }
