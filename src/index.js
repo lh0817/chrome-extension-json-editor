@@ -1,6 +1,6 @@
 import JSONEditor from 'jsoneditor'
 
-const tabBtn = document.querySelector('.new-tab')
+const tabBtn = document.querySelector('#new-tab')
 
 function init() {
   // init options for both editors
