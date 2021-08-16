@@ -10,9 +10,9 @@ body {
   min-height: 570px;
   height: calc(100vh - 36px);
   grid-template-columns: 1fr 24px 1fr;
-  grid-template-rows: 36px auto 36px;
-  column-gap: 5px;
+  grid-template-rows: 36px auto 30px;
   padding: 5px;
+  background: #fafafa;
 }
 
 .grid-cell-1 {
@@ -20,6 +20,7 @@ body {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row: 1;
+  padding-top: 5px;
 }
 
 .grid-cell-2 {
@@ -30,6 +31,7 @@ body {
 .grid-cell-3 {
   grid-column: 3 / 3;
   grid-row: 1;
+  padding-top: 5px;
   text-align: right;
 }
 
@@ -60,7 +62,7 @@ body {
   grid-column-end: 2;
   grid-row: 3;
   background: #3c3f41;
-  padding: 5px;
+  padding: 3px;
 }
 
 .grid-cell-8 {
@@ -72,13 +74,20 @@ body {
   grid-column: 3 / 3;
   grid-row: 3;
   background: #3c3f41;
-  padding: 5px;
+  padding: 3px;
 }
 
 h1 {
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
   font-size: 20px;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+h1 span {
+  font-weight: bold;
 }
 
 .toolbar-btn {
@@ -102,6 +111,21 @@ h1 {
   bottom:0;
   width:24px;
   height:24px;
+}
+
+.toolbar-btn.small {
+  width: 18px;
+  height: 18px;
+}
+
+.toolbar-btn.small svg {
+  position:absolute;
+  top:0;
+  right:0;
+  left: 0;
+  bottom:0;
+  width:16px;
+  height:16px;
 }
 
 /* editor styles */
