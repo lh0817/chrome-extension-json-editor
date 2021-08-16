@@ -10,13 +10,15 @@ body {
   min-height: 570px;
   height: calc(100vh - 36px);
   grid-template-columns: 1fr 24px 1fr;
-  grid-template-rows: 36px auto;
+  grid-template-rows: 36px auto 36px;
   column-gap: 5px;
   padding: 5px;
 }
 
 .grid-cell-1 {
   grid-column: 1 / 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
   grid-row: 1;
 }
 
@@ -33,6 +35,8 @@ body {
 
 .grid-cell-4 {
   grid-column: 1 / 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
   grid-row: 2;
 }
 
@@ -50,6 +54,27 @@ body {
   grid-row: 2;
 }
 
+.grid-cell-7 {
+  grid-column: 1 / 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row: 3;
+  background: #3c3f41;
+  padding: 5px;
+}
+
+.grid-cell-8 {
+  grid-column: 2 / 3;
+  grid-row: 3;
+}
+
+.grid-cell-9 {
+  grid-column: 3 / 3;
+  grid-row: 3;
+  background: #3c3f41;
+  padding: 5px;
+}
+
 h1 {
   margin: 0;
   padding: 0;
@@ -57,7 +82,24 @@ h1 {
 }
 
 .toolbar-btn {
+  position: relative;
+  width:26px;
+  height:26px;
   cursor: pointer;
+  border: 0;
+  background: transparent;
+}
+
+.toolbar-btn:disabled {
+  pointer-events: none;
+}
+
+.toolbar-btn svg {
+  position:absolute;
+  top:0;
+  right:0;
+  left: 0;
+  bottom:0;
   width:24px;
   height:24px;
 }
@@ -65,7 +107,7 @@ h1 {
 /* editor styles */
 div.jsoneditor,
 div.jsoneditor-menu {
-  border-color: #3c3f41;
+  border-color: #e3e3e3;
 }
 
 div.jsoneditor-menu {

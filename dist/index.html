@@ -15,37 +15,73 @@
   <div class="grid-cell-1">
     <h1>JSON Editor</h1>
   </div>
+
   <div class="grid-cell-2"></div>
+
   <div class="grid-cell-3">
-    <svg id="load" class="toolbar-btn" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M19,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4H10L12,6H19A2,2 0 0,1 21,8H21L4,8V18L6.14,10H23.21L20.93,18.5C20.7,19.37 19.92,20 19,20Z" />
-    </svg>
-
-    <svg id="save" class="toolbar-btn" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" />
-    </svg>
-
-    <svg id="new-tab" class="toolbar-btn" viewBox="0 0 24 24">
-      <path fill="currentColor"
-            d="M3,3A2,2 0 0,0 1,5V19A2,2 0 0,0 3,21H21A2,2 0 0,0 23,19V5A2,2 0 0,0 21,3H3M3,5H13V9H21V19H3V5M10,10V13H7V15H10V18H12V15H15V13H12V10H10Z"/>
-    </svg>
+    <button id="new-tab" class="toolbar-btn">
+      <svg viewBox="0 0 24 24">
+        <path fill="currentColor"
+              d="M3,3A2,2 0 0,0 1,5V19A2,2 0 0,0 3,21H21A2,2 0 0,0 23,19V5A2,2 0 0,0 21,3H3M3,5H13V9H21V19H3V5M10,10V13H7V15H10V18H12V15H15V13H12V10H10Z"/>
+      </svg>
+    </button>
   </div>
-  <div id="jsoneditor1"></div>
+
+  <div id="jsoneditor1" class="grid-cell-4"></div>
+
   <div class="grid-cell-5">
-    <!-- todo icons for sync, left, right -->
-    <svg id="sync" class="toolbar-btn" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z" />
-    </svg>
-
-    <svg id="sync-left" class="toolbar-btn" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
-    </svg>
-
-    <svg id="sync-right" class="toolbar-btn" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-    </svg>
+    <button id="sync" class="toolbar-btn">
+      <svg viewBox="0 0 24 24">
+        <path fill="currentColor"
+              d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z"/>
+      </svg>
+    </button>
+    <button id="sync-left" class="toolbar-btn" disabled>
+      <svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"/>
+      </svg>
+    </button>
+    <button id="sync-right" class="toolbar-btn" disabled>
+      <svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
+      </svg>
+    </button>
   </div>
+
   <div id="jsoneditor2" class="grid-cell-6"></div>
+
+  <div class="grid-cell-7">
+    <button id="load-left" class="toolbar-btn">
+      <svg viewBox="0 0 24 24">
+        <path fill="#ffffff"
+              d="M19,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4H10L12,6H19A2,2 0 0,1 21,8H21L4,8V18L6.14,10H23.21L20.93,18.5C20.7,19.37 19.92,20 19,20Z"/>
+      </svg>
+    </button>
+    <button id="save-left" class="toolbar-btn">
+      <svg viewBox="0 0 24 24">
+        <path fill="#ffffff"
+              d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="grid-cell-8"></div>
+
+  <div class="grid-cell-9">
+    <button id="load-right" class="toolbar-btn">
+      <svg viewBox="0 0 24 24">
+        <path fill="#ffffff"
+              d="M19,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4H10L12,6H19A2,2 0 0,1 21,8H21L4,8V18L6.14,10H23.21L20.93,18.5C20.7,19.37 19.92,20 19,20Z"/>
+      </svg>
+    </button>
+    <button id="save-right" class="toolbar-btn">
+      <svg viewBox="0 0 24 24">
+        <path fill="#ffffff"
+              d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z"/>
+      </svg>
+    </button>
+  </div>
+
 </div>
 
 <script src="main.js"></script>
