@@ -15,18 +15,18 @@ const options = {
 const editor1 = new JSONEditor(document.getElementById('editor1'), {
   ...options,
   mode: 'text',
-  onChangeText: function (jsonString) {
-    editor2.updateText(jsonString)
-  },
+  // onChangeText: function (jsonString) {
+  //   editor2.updateText(jsonString)
+  // },
 })
 
 // create editor 2
 const editor2 = new JSONEditor(document.getElementById('editor2'), {
   ...options,
   mode: 'tree',
-  onChangeText: function (jsonString) {
-    editor1.updateText(jsonString)
-  },
+  // onChangeText: function (jsonString) {
+  //   editor1.updateText(jsonString)
+  // },
 })
 
 const tabBtn = document.querySelector('#new-tab')
@@ -66,11 +66,14 @@ function handleSyncActive(e) {
   console.log('handleSyncActive')
 }
 
-function handleSync(e, editor) {
+/**
+ * @param e
+ * @param e1
+ * @param e2
+ */
+function handleSync(e, e1, e2) {
   e.preventDefault()
-  // todo
-  console.log(editor.get())
-  console.log('handleSync')
+  e2.set(e1.get())
 }
 
 function handleLoad(e, editor) {
@@ -90,8 +93,8 @@ function handleSave(e, editor) {
 // event listener
 tabBtn.addEventListener('click', (e) => handleNewTab(e))
 syncBtn.addEventListener('click', (e) => handleSyncActive(e))
-syncLeftBtn.addEventListener('click', (e) => handleSync(e, editor2))
-syncRightBtn.addEventListener('click', (e) => handleSync(e, editor1))
+syncLeftBtn.addEventListener('click', (e) => handleSync(e, editor2, editor1))
+syncRightBtn.addEventListener('click', (e) => handleSync(e, editor1, editor2))
 loadLeftBtn.addEventListener('click', (e) => handleLoad(e, editor1))
 loadRightBtn.addEventListener('click', (e) => handleLoad(e, editor2))
 saveLeftBtn.addEventListener('click', (e) => handleSave(e, editor1))
