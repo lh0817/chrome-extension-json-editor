@@ -14,7 +14,7 @@ const options = {
 // create editor 1
 const editor1 = new JSONEditor(document.getElementById('editor1'), {
   ...options,
-  mode: 'text',
+  mode: 'code',
   // onChangeText: function (jsonString) {
   //   editor2.updateText(jsonString)
   // },
@@ -66,6 +66,7 @@ function handleNewTab(e) {
 function handleSyncActive(e) {
   e.preventDefault()
   // todo
+  
   console.log('handleSyncActive')
 }
 
@@ -116,7 +117,6 @@ async function handleSave(e, editor) {
   const file = await fileHandle.createWritable()
   await file.write(editor.getText())
   await file.close()
-  console.log('handleSave')
 }
 
 // event listener
