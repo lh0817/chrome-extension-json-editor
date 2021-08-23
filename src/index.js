@@ -52,6 +52,9 @@ function init() {
   editor2.set(json)
 }
 
+/**
+ * @param e
+ */
 function handleNewTab(e) {
   e.preventDefault()
   chrome.tabs.create({
@@ -76,6 +79,11 @@ function handleSync(e, e1, e2) {
   e2.set(e1.get())
 }
 
+/**
+ * @param e
+ * @param editor
+ * @returns {Promise<void>}
+ */
 async function handleLoad(e, editor) {
   e.preventDefault()
   let fileHandle
@@ -84,13 +92,30 @@ async function handleLoad(e, editor) {
   const file = await fileHandle.getFile()
   const content = await file.text()
   // Set editor content
-  editor.set(content)
+  editor.setText(content)
 }
 
-function handleSave(e, editor) {
+/**
+ * @param e
+ * @param editor
+ * @returns {Promise<void>}
+ */
+async function handleSave(e, editor) {
   e.preventDefault()
-  console.log(editor.get())
-  // todo
+  const options = {
+    types: [
+      {
+        description: 'JSON Files',
+        accept: {
+          'text/plain': ['.json'],
+        },
+      },
+    ],
+  }
+  const fileHandle = await window.showSaveFilePicker(options)
+  const file = await fileHandle.createWritable()
+  await file.write(editor.getText())
+  await file.close()
   console.log('handleSave')
 }
 
