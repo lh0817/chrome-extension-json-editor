@@ -76,11 +76,15 @@ function handleSync(e, e1, e2) {
   e2.set(e1.get())
 }
 
-function handleLoad(e, editor) {
+async function handleLoad(e, editor) {
   e.preventDefault()
-  console.log(editor.set('test'))
-  // todo
-  console.log('handleLoad')
+  let fileHandle
+  // Destructure the one-element array.
+  [fileHandle] = await window.showOpenFilePicker()
+  const file = await fileHandle.getFile()
+  const content = await file.text()
+  // Set editor content
+  editor.set(content)
 }
 
 function handleSave(e, editor) {
