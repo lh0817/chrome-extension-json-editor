@@ -1,36 +1,41 @@
 import JSONEditor from 'jsoneditor'
 
-// init options for both editors
+// Init options for both editors
 const options = {
-  modes: ['code', 'form', 'text', 'tree', 'view', 'preview'], // allowed modes
-  onError: function (err) {
-    alert(err.toString())
-  },
+  modes: ['code', 'form', 'text', 'tree', 'view', 'preview'],
   onModeChange: function (newMode, oldMode) {
     console.log('Mode switched from', oldMode, 'to', newMode)
   },
 }
 
-// create editor 1
+// Create editor 1
 const editor1 = new JSONEditor(document.getElementById('editor1'), {
   ...options,
   mode: 'code',
-  // onChangeText: function (jsonString) {
-  //   editor2.updateText(jsonString)
-  // },
+  onChangeText: function (jsonString) {
+    chrome.storage.local.get(['syncActive'], (result) => {
+      if (result.syncActive === true) {
+        editor2.updateText(jsonString)
+      }
+    })
+  },
 })
 
-// create editor 2
+// Create editor 2
 const editor2 = new JSONEditor(document.getElementById('editor2'), {
   ...options,
   mode: 'tree',
-  // onChangeText: function (jsonString) {
-  //   editor1.updateText(jsonString)
-  // },
+  onChangeText: function (jsonString) {
+    chrome.storage.local.get(['syncActive'], (result) => {
+      if (result.syncActive === true) {
+        editor1.updateText(jsonString)
+      }
+    })
+  },
 })
 
 const tabBtn = document.querySelector('#new-tab')
-const syncBtn = document.querySelector('#sync-active')
+const syncActiveBtn = document.querySelector('#sync-active')
 const syncLeftBtn = document.querySelector('#sync-left')
 const syncRightBtn = document.querySelector('#sync-right')
 const loadLeftBtn = document.querySelector('#load-left')
@@ -38,8 +43,18 @@ const loadRightBtn = document.querySelector('#load-right')
 const saveLeftBtn = document.querySelector('#save-left')
 const saveRightBtn = document.querySelector('#save-right')
 
+const svgSync = document.querySelectorAll('.svg-sync')
+
+/**
+ * Init function for extension
+ */
 function init() {
-  // set initial data in both editors
+  // Init storage vars
+  chrome.storage.local.set({'syncActive': true})
+  // Init disabled btn
+  syncLeftBtn.disabled = true
+  syncRightBtn.disabled = true
+  // Init data in both editors
   const json = {
     'array': [1, 2, 3],
     'boolean': true,
@@ -63,11 +78,31 @@ function handleNewTab(e) {
   })
 }
 
+/**
+ * @param e
+ */
 function handleSyncActive(e) {
   e.preventDefault()
-  // todo
-  
-  console.log('handleSyncActive')
+  chrome.storage.local.get(['syncActive'], async (result) => {
+    // Set internal var to opposite
+    let syncState = !result.syncActive
+    await chrome.storage.local.set({'syncActive': syncState})
+    // Sync active
+    if (syncState === true) {
+      svgSync.forEach((svg) => {
+        svg.classList.toggle('hidden')
+      })
+      syncLeftBtn.disabled = true
+      syncRightBtn.disabled = true
+      return
+    }
+    // Sync disabled
+    svgSync.forEach((svg) => {
+      svg.classList.toggle('hidden')
+    })
+    syncLeftBtn.disabled = false
+    syncRightBtn.disabled = false
+  })
 }
 
 /**
@@ -121,7 +156,7 @@ async function handleSave(e, editor) {
 
 // event listener
 tabBtn.addEventListener('click', (e) => handleNewTab(e))
-syncBtn.addEventListener('click', (e) => handleSyncActive(e))
+syncActiveBtn.addEventListener('click', (e) => handleSyncActive(e))
 syncLeftBtn.addEventListener('click', (e) => handleSync(e, editor2, editor1))
 syncRightBtn.addEventListener('click', (e) => handleSync(e, editor1, editor2))
 loadLeftBtn.addEventListener('click', (e) => handleLoad(e, editor1))

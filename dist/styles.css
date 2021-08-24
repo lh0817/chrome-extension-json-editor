@@ -90,6 +90,10 @@ h1 span {
   font-weight: bold;
 }
 
+.hidden {
+  display: none;
+}
+
 .toolbar-btn {
   position: relative;
   width:26px;
