@@ -1,6 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "JSON Editor",
+  "name": "Chromium JSON Editor",
+  "description": "JSON Editor Extension for Chromium Browsers.",
   "version": "1.0.0",
   "permissions": ["storage", "tabs"],
   "action": {
