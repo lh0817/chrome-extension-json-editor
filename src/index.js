@@ -11,7 +11,7 @@ const options = {
 // Create editor 1
 const editor1 = new JSONEditor(document.getElementById('editor1'), {
   ...options,
-  mode: 'code',
+  mode: 'text',
   onChangeText: function (jsonString) {
     chrome.storage.local.get(['syncActive'], (result) => {
       if (result.syncActive === true) {
