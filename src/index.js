@@ -1,4 +1,11 @@
-import JSONEditor from 'jsoneditor'
+import JSONEditor from 'jsoneditor/dist/jsoneditor-minimalist.min'
+import ace from 'ace-builds/src-min-noconflict/ace' // Load Ace Editor
+// Import initial theme and mode so we don't have to wait for 2 extra HTTP requests
+import 'ace-builds/src-min-noconflict/theme-chrome'
+import 'ace-builds/src-min-noconflict/mode-json'
+
+// Workaround for Chromium CSP
+ace.config.set('useWorker', false)
 
 // Init options for both editors
 const options = {
@@ -6,16 +13,35 @@ const options = {
   onModeChange: function (newMode, oldMode) {
     console.log('Mode switched from', oldMode, 'to', newMode)
   },
+  onValidationError: function (errors) {
+    console.log('onValidationError')
+    errors.forEach((error) => {
+      switch (error.type) {
+        case 'validation':
+          console.log('schema validation error')
+          break;
+        case 'customValidation':
+          console.log('custom validation error')
+          break;
+        case 'error':
+          console.log('json parse error')
+          break;
+      }
+    })
+  },
+  ace: ace,
 }
 
 // Create editor 1
 const editor1 = new JSONEditor(document.getElementById('editor1'), {
   ...options,
-  mode: 'text',
+  mode: 'code',
   onChangeText: function (jsonString) {
     chrome.storage.local.get(['syncActive'], (result) => {
       if (result.syncActive === true) {
-        editor2.updateText(jsonString)
+        try {
+          editor2.updateText(jsonString)
+        } catch (e) {}
       }
     })
   },
@@ -28,7 +54,9 @@ const editor2 = new JSONEditor(document.getElementById('editor2'), {
   onChangeText: function (jsonString) {
     chrome.storage.local.get(['syncActive'], (result) => {
       if (result.syncActive === true) {
-        editor1.updateText(jsonString)
+        try {
+          editor1.updateText(jsonString)
+        } catch (e) {}
       }
     })
   },

@@ -20,6 +20,6 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "jsoneditor": "^9.5.3"
+    "jsoneditor": "^9.5.6"
   }
 }
