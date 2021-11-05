@@ -36,7 +36,6 @@ const options = {
 const editor1 = new JSONEditor(document.getElementById('editor1'), {
   ...options,
   mode: 'code',
-  // todo problematic with code -> tree
   onChangeText: function (jsonString) {
     chrome.storage.local.get(['syncActive'], (result) => {
       if (result.syncActive === true) {
